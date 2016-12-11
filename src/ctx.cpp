@@ -333,7 +333,7 @@ void zmq::ctx_t::unregister_endpoints (socket_base_t *socket_)
     endpoints_sync.unlock ();
 }
 
-int zmq::ctx_t::population() {
+unsigned int zmq::ctx_t::slots_count() {
     unsigned int pop = 0;
     int i;
     for(i=0; i < max_sockets + io_thread_count + 2; i++) {
@@ -342,6 +342,10 @@ int zmq::ctx_t::population() {
 	}
     }
     return pop;
+}
+
+unsigned int zmq::ctx_t::slots_max() {
+  return max_sockets + io_thread_count + 2;
 }
 
 zmq::endpoint_t zmq::ctx_t::find_endpoint (const char *addr_)

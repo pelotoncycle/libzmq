@@ -94,6 +94,8 @@ namespace zmq
         int register_endpoint (const char *addr_, endpoint_t &endpoint_);
         void unregister_endpoints (zmq::socket_base_t *socket_);
         endpoint_t find_endpoint (const char *addr_);
+        unsigned int slots_count();
+        unsigned int slots_max();
 
         enum {
             term_tid = 0,
@@ -101,6 +103,7 @@ namespace zmq
         };
 
         ~ctx_t ();
+
 
     private:
 
